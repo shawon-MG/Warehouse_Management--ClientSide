@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "electronics-inventory--p11",
+    "staging": "electronics-inventory--p11"
+  },
+  "targets": {}
+}

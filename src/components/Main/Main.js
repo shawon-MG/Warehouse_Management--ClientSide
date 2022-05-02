@@ -2,12 +2,16 @@ import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 
 import app from '../../firebase.config';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useState } from 'react';
+
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+
 
 const auth = getAuth(app);
 
 const Main = () => {
 
+    const [user, setUser] = useState({});
     const googleProvider = new GoogleAuthProvider();
 
     const handleGoogleSignIn = () => {
@@ -15,10 +19,21 @@ const Main = () => {
         signInWithPopup(auth, googleProvider)
             .then(result => {
                 const user = result.user;
+                setUser(user);
                 console.log(user);
             })
             .catch(error => {
                 console.log('Error', error);
+            })
+    };
+
+    const handleSignOut = () => {
+        signOut(auth)
+            .then(() => {
+                setUser({})
+            })
+            .catch(error => {
+                setUser({})
             })
     };
 
@@ -27,16 +42,35 @@ const Main = () => {
 
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">Electronic Items Warehouse</Navbar.Brand>
+                    <Navbar.Brand href="/">Electronic Items Warehouse </Navbar.Brand>
                     <Nav className="mx-auto p-2">
-                        <Navbar.Brand className='me-5' href="manage-item">Manage Item</Navbar.Brand>
-                        <Navbar.Brand className='me-5' href="add-item">Add Item</Navbar.Brand>
-                        <Navbar.Brand className='me-5' href="my-item">My Item</Navbar.Brand>
-                        <Navbar.Brand className='me-5' href="/blogs">Blogs</Navbar.Brand>
+                        <Navbar.Brand className='me-4' href="manage-item">Manage Item</Navbar.Brand>
+                        <Navbar.Brand className='me-4' href="add-item">Add Item</Navbar.Brand>
+                        <Navbar.Brand className='me-4' href="my-item">My Item</Navbar.Brand>
 
-                        <Button href="/signIn" variant="secondary" className='text-white me-3' >Log In</Button>
+                        <Navbar.Brand className='me-4' href="/blogs">Blogs</Navbar.Brand>
 
-                        <Button variant="secondary" className='text-white' onClick={handleGoogleSignIn}>Google</Button>
+                        {
+                            user.email
+                                ?
+                                <Button variant="secondary" className='text-white' onClick={handleSignOut}>Sign Out</Button>
+                                :
+                                <div>
+                                    <Button href="/signIn" variant="secondary" className='text-white me-3' >Log In</Button>
+
+                                    <Button variant="secondary" className='text-white me-3' onClick={handleGoogleSignIn}>Google</Button>
+                                </div>
+
+                        }
+                        {
+                            user.email
+                                ?
+                                <h5 className='text-white mt-2 ps-2'> Hi, <span className='bg-white text-dark p-1 me-1 rounded'> {user.displayName} </span> you're logged in!</h5>
+                                :
+                                <h5 className='text-white mt-2 ps-2'> You're not logged in!</h5>
+
+                        }
+
                     </Nav>
                 </Container>
             </Navbar>
