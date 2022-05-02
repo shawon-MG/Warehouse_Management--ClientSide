@@ -44,11 +44,23 @@ const Main = () => {
                 <Container>
                     <Navbar.Brand href="/">Electronic Items Warehouse </Navbar.Brand>
                     <Nav className="mx-auto p-2">
-                        <Navbar.Brand className='me-4' href="manage-item">Manage Item</Navbar.Brand>
-                        <Navbar.Brand className='me-4' href="add-item">Add Item</Navbar.Brand>
-                        <Navbar.Brand className='me-4' href="my-item">My Item</Navbar.Brand>
 
                         <Navbar.Brand className='me-4' href="/blogs">Blogs</Navbar.Brand>
+
+                        {
+                            user.email
+                                ?
+                                <>
+
+                                    <Navbar.Brand className='me-4' href="manage-item">Manage Item</Navbar.Brand>
+                                    <Navbar.Brand className='me-4' href="add-item">Add Item</Navbar.Brand>
+                                    <Navbar.Brand className='me-4' href="my-item">My Item</Navbar.Brand>
+
+                                </>
+                                :
+                                <h5 className='text-white mt-2 me-4 ps-2'> You've to log in to access more </h5>
+                        }
+
 
                         {
                             user.email
@@ -65,9 +77,9 @@ const Main = () => {
                         {
                             user.email
                                 ?
-                                <h5 className='text-white mt-2 ps-2'> Hi, <span className='bg-white text-dark p-1 me-1 rounded'> {user.displayName} </span> you're logged in!</h5>
+                                <h5 className='text-white mt-2 ps-2'> Hi, <span className='bg-white text-dark p-1 me-1 rounded'> {user.displayName} </span></h5>
                                 :
-                                <h5 className='text-white mt-2 ps-2'> You're not logged in!</h5>
+                                <h5 className='text-white mt-2 ps-2'> Please, log in</h5>
 
                         }
 
