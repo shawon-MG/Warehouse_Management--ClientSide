@@ -4,7 +4,7 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import app from '../../firebase.config';
 import { useState } from 'react';
 
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
 const auth = getAuth(app);
@@ -27,15 +27,6 @@ const Main = () => {
             })
     };
 
-    const handleSignOut = () => {
-        signOut(auth)
-            .then(() => {
-                setUser({})
-            })
-            .catch(error => {
-                setUser({})
-            })
-    };
 
     return (
         <div className='mb-4'>
@@ -47,33 +38,23 @@ const Main = () => {
 
                         <Navbar.Brand className='me-4' href="/blogs">Blogs</Navbar.Brand>
 
-                        {
-                            user.email
-                                ?
-                                <>
-
-                                    <Navbar.Brand className='me-4' href="manage-item">Manage Item</Navbar.Brand>
-                                    <Navbar.Brand className='me-4' href="add-item">Add Item</Navbar.Brand>
-                                    <Navbar.Brand className='me-4' href="my-item">My Item</Navbar.Brand>
-
-                                </>
-                                :
-                                <h5 className='text-white mt-2 me-4 ps-2'> You've to log in to access more </h5>
-                        }
 
 
-                        {
-                            user.email
-                                ?
-                                <Button variant="secondary" className='text-white' onClick={handleSignOut}>Sign Out</Button>
-                                :
-                                <div>
-                                    <Button href="/signIn" variant="secondary" className='text-white me-3' >Log In</Button>
+                        <Navbar.Brand className='me-4' href="manage-item">Manage Item</Navbar.Brand>
+                        <Navbar.Brand className='me-4' href="add-item">Add Item</Navbar.Brand>
+                        <Navbar.Brand className='me-4' href="my-item">My Item</Navbar.Brand>
 
-                                    <Button variant="secondary" className='text-white me-3' onClick={handleGoogleSignIn}>Google</Button>
-                                </div>
 
-                        }
+
+
+
+
+                        <Button href="/signIn" variant="secondary" className='text-white me-3' >Log In</Button>
+
+                        <Button variant="secondary" className='text-white me-3' onClick={handleGoogleSignIn}>Google</Button>
+
+
+
                         {
                             user.email
                                 ?

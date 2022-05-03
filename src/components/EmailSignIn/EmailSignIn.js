@@ -2,6 +2,8 @@ import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, sendPas
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import app from '../../firebase.config';
+import useFirebase from '../../hooks/useFirebase';
+
 
 
 const auth = getAuth(app);
@@ -63,6 +65,8 @@ const SignIn = () => {
             })
     };
 
+    const { handleGoogleSignIn } = useFirebase();
+
     return (
         <div>
             <div className="registration w-50 mx-auto">
@@ -85,7 +89,55 @@ const SignIn = () => {
                 </Form>
             </div>
 
+            <Button onClick={handleGoogleSignIn} variant="secondary" size="lg" className="mt-4">
+                Google Sign In
+            </Button>
+
         </div>
     );
 };
 export default SignIn;
+
+
+
+
+/* import { Button } from "bootstrap";
+import { getAuth } from "firebase/auth";
+import React from "react";
+import { Form } from "react-bootstrap";
+import { useSignInWithGoogle } from 'react-firebase-hooks';
+import app from "../../firebase.config";
+const auth = getAuth(app);
+
+const login = () => {
+    const [signInWithGoogle, user] = useSignInWithGoogle(auth);
+
+    return (
+        <div>
+            <div className="registration w-50 mx-auto">
+                <h2 className='bg-secondary text-white p-2 mt-4'> Please {register ? 'Log-In' : 'Register'}</h2>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter Your Email" required />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Enter Your Password" required />
+                    </Form.Group>
+                    <Form.Group className="mb-3 " controlId="formBasicCheckbox">
+                        <Form.Check onChange={handleRegistration} type="checkbox" label="Registered Already ?" />
+                    </Form.Group>
+                    <Button variant="secondary" type="submit" className='text-white'>
+                        {register ? 'Log-In' : 'Register'}
+                    </Button> <br />
+                    <Button onClick={handlePasswordReset} variant="link" className='text-dark'>Forget Password?</Button>
+                </Form>
+            </div>
+
+            <Button variant="secondary" size="lg" className="mt-4" onClick={() => signInWithGoogle()}>
+                Google Sign In
+            </Button>
+
+        </div>
+    );
+}; */
