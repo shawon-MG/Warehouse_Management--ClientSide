@@ -1,32 +1,35 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 
-import app from '../../firebase.config';
-import { useState } from 'react';
+// import app from '../../firebase.config';
+// import { useState } from 'react';
 
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import useFirebase from '../../hooks/useFirebase';
 
 
-const auth = getAuth(app);
+// import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+
+
+// const auth = getAuth(app);
 
 const Main = () => {
 
-    const [user, setUser] = useState({});
-    const googleProvider = new GoogleAuthProvider();
+    // const [user, setUser] = useState({});
+    // const googleProvider = new GoogleAuthProvider();
 
-    const handleGoogleSignIn = () => {
+    // const handleGoogleSignIn = () => {
 
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                const user = result.user;
-                setUser(user);
-                console.log(user);
-            })
-            .catch(error => {
-                console.log('Error', error);
-            })
-    };
-
+    //     signInWithPopup(auth, googleProvider)
+    //         .then(result => {
+    //             const user = result.user;
+    //             setUser(user);
+    //             console.log(user);
+    //         })
+    //         .catch(error => {
+    //             console.log('Error', error);
+    //         })
+    // };
+    const { user, handleSignOut } = useFirebase();
 
     return (
         <div className='mb-4'>
@@ -47,16 +50,24 @@ const Main = () => {
 
 
 
+                        {
+                            user?.uid
+                                ?
+                                <Button onClick={handleSignOut} variant="secondary" className='text-white me-3' >Sign Out</Button>
+                                :
+                                <Button href="/signIn" variant="secondary" className='text-white me-3' >Log In</Button>
 
 
-                        <Button href="/signIn" variant="secondary" className='text-white me-3' >Log In</Button>
+                        }
 
-                        <Button variant="secondary" className='text-white me-3' onClick={handleGoogleSignIn}>Google</Button>
+
+
+                        {/* <Button variant="secondary" className='text-white me-3' onClick={handleGoogleSignIn}>Google</Button> */}
 
 
 
                         {
-                            user.email
+                            user?.uid
                                 ?
                                 <h5 className='text-white mt-2 ps-2'> Hi, <span className='bg-white text-dark p-1 me-1 rounded'> {user.displayName} </span></h5>
                                 :
