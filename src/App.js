@@ -5,6 +5,8 @@ import Home from './components/Home/Home';
 import Main from './components/Main/Main';
 import NotFound from './components/NotFound/NotFound';
 import EmailSignIn from './components/EmailSignIn/EmailSignIn';
+import ManageItem from './components/ManageItem/ManageItem';
+// import RequireAuth from './components/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -15,11 +17,20 @@ function App() {
 
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+
+        <Route path='/manage-item' element={
+          // <RequireAuth>
+          <ManageItem></ManageItem>
+          // </RequireAuth> 
+
+
+        }></Route>
+
         <Route path='/signIn' element={<EmailSignIn></EmailSignIn>}></Route>
 
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
-    </div>
+    </div >
   );
 }
 

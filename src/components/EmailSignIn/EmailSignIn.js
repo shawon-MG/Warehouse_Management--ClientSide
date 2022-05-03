@@ -1,12 +1,13 @@
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import app from '../../firebase.config';
+import { auth } from '../../firebase.config';
+// import app from '../../firebase.config';
 import useFirebase from '../../hooks/useFirebase';
 
 
 
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 const SignIn = () => {
 

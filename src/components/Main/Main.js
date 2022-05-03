@@ -43,9 +43,11 @@ const Main = () => {
 
 
 
-                        <Navbar.Brand className='me-4' href="manage-item">Manage Item</Navbar.Brand>
-                        <Navbar.Brand className='me-4' href="add-item">Add Item</Navbar.Brand>
-                        <Navbar.Brand className='me-4' href="my-item">My Item</Navbar.Brand>
+                        <Navbar.Brand className='me-4' href="/manage-item">Manage Item</Navbar.Brand>
+
+                        <Navbar.Brand className='me-4' href="/add-item">Add Item</Navbar.Brand>
+
+                        <Navbar.Brand className='me-4' href="/my-item">My Item</Navbar.Brand>
 
 
 
@@ -55,7 +57,7 @@ const Main = () => {
                                 ?
                                 <Button onClick={handleSignOut} variant="secondary" className='text-white me-3' >Sign Out</Button>
                                 :
-                                <Button href="/signIn" variant="secondary" className='text-white me-3' >Log In</Button>
+                                <Button href="/signIn" variant="secondary" className='text-white me-3' >Sign In</Button>
 
 
                         }
@@ -71,7 +73,7 @@ const Main = () => {
                                 ?
                                 <h5 className='text-white mt-2 ps-2'> Hi, <span className='bg-white text-dark p-1 me-1 rounded'> {user.displayName} </span></h5>
                                 :
-                                <h5 className='text-white mt-2 ps-2'> Please, log in</h5>
+                                <h5 className='text-white mt-2 ps-2'> Please, sign in</h5>
 
                         }
 
