@@ -1,8 +1,10 @@
-
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useLoadeddata from '../../hooks/useLoadeddata';
 
 const ManageItem = () => {
+
+    const navigate = useNavigate();
 
     const { items } = useLoadeddata();
     return (
@@ -29,7 +31,7 @@ const ManageItem = () => {
 
                     </div>)
             }
-            <button type="button" className="btn btn-dark btn-lg mt-2 m-5">Add Items</button>
+            <button onClick={() => navigate('/add-item')} type="button" className="btn btn-dark btn-lg mt-2 m-5">Add Items</button>
         </div>
     );
 };
