@@ -11,7 +11,7 @@ const ManageItem = () => {
         <div>
             <h1> {items.length}</h1>
 
-            {
+            {/* {
                 items.map(item =>
                     <div className="row row-cols-1 row-cols-md-3 g-4 m-4">
 
@@ -30,7 +30,8 @@ const ManageItem = () => {
                         </div>
 
                     </div>)
-            }
+            } */}
+
             <button onClick={() => navigate('/add-item')} type="button" className="btn btn-dark btn-lg mt-2 m-5">Add Items</button>
         </div>
     );

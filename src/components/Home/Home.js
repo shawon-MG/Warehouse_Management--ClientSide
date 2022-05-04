@@ -1,8 +1,10 @@
 import React from 'react';
 import { Carousel, CarouselItem } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
+    const navigate = useNavigate();
     return (
         <div>
             <Carousel >
@@ -28,6 +30,11 @@ const Home = () => {
                     </div>
                 </CarouselItem>
             </Carousel>
+
+            <div>
+                <button onClick={() => navigate('/manage-item')} type="button" className="btn btn-link btn-lg bg-dark text-white mt-2 m-4">Manage Items</button>
+            </div>
+
         </div>
     );
 };
