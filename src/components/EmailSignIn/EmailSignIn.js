@@ -68,6 +68,7 @@ const SignIn = () => {
     };
 
     const { handleGoogleSignIn } = useFirebase();
+
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.search?.from?.pathname || '/';

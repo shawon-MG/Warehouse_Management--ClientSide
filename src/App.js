@@ -6,7 +6,7 @@ import Main from './components/Main/Main';
 import NotFound from './components/NotFound/NotFound';
 import EmailSignIn from './components/EmailSignIn/EmailSignIn';
 import ManageItem from './components/ManageItem/ManageItem';
-import RequireAuth from './components/RequireAuth/RequireAuth';
+// import RequireAuth from './components/RequireAuth/RequireAuth';
 import AddItem from './components/AddItem/AddItem';
 import MyItem from './components/MyItem/MyItem';
 
@@ -20,21 +20,21 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
 
         <Route path='/manage-item' element={
-          <RequireAuth>
-            <ManageItem></ManageItem>
-          </RequireAuth>
+          // <RequireAuth>
+          <ManageItem></ManageItem>
+          // </RequireAuth>
         }></Route>
 
         <Route path='/add-item' element={
-          <RequireAuth>
-            <AddItem></AddItem>
-          </RequireAuth>
+          // <RequireAuth>
+          <AddItem></AddItem>
+          // </RequireAuth>
         }></Route>
 
         <Route path='/my-item' element={
-          <RequireAuth>
-            <MyItem></MyItem>
-          </RequireAuth>
+          // <RequireAuth>
+          <MyItem></MyItem>
+          // </RequireAuth>
         }></Route>
 
         <Route path='/signIn' element={<EmailSignIn></EmailSignIn>}></Route>
