@@ -39,7 +39,6 @@ const Main = () => {
                     <Navbar.Brand href="/">Electronic Items Warehouse </Navbar.Brand>
                     <Nav className="mx-auto p-2">
 
-                        <Navbar.Brand className='me-4' href="/blogs">Blogs</Navbar.Brand>
 
 
 
@@ -49,6 +48,7 @@ const Main = () => {
 
                         <Navbar.Brand className='me-4' href="/my-item">My Item</Navbar.Brand>
 
+                        <Navbar.Brand className='me-4' href="/blogs">Blogs</Navbar.Brand>
 
 
 
