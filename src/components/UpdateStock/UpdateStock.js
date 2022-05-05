@@ -16,10 +16,29 @@ const UpdateStock = () => {
             .then(data => setItem(data))
     }, []);
 
+    const { name, img, price, quantity, supplier, description } = item;
+
     return (
         <div>
+            <div className="row row-cols-1 row-cols-md-3 g-4 m-4">
+                <div className="col mx-auto">
+                    <div className="card h-100">
+                        <img src={img} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <h5 className="card-title"><strong>Product Name :</strong> {name}</h5>
+                            <p className="card-text">{description}</p>
+                            <h6 className="card-title"><strong>Price :</strong> {price}</h6>
+                            <h6 className="card-title"><strong>Quantity</strong> : {quantity}</h6>
+                            <h6 className="card-title"><strong>Supplier</strong> : {supplier}</h6>
+                        </div>
+                        <button type="button" className="btn btn-secondary"> Delivered </button>
+                    </div>
+                </div>
 
-            <h1>ID : {item._id} </h1>
+            </div>
+
+
+
             <div className='w-50 mx-auto rounded shadow-lg p-4'>
                 <h2 className='bg-secondary text-white p-2 mt-2 rounded'>Update Quantity</h2>
 
@@ -37,7 +56,7 @@ const UpdateStock = () => {
             <div>
                 <button onClick={() => navigate('/manage-item')} type="button" className="btn btn-link btn-lg bg-dark text-white mt-2 m-4">Manage Items</button>
             </div>
-        </div>
+        </div >
     );
 };
 
