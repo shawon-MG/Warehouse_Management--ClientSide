@@ -1,10 +1,15 @@
 import React from 'react';
 import { Carousel, CarouselItem } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import useLoadeddata from '../../hooks/useLoadeddata';
+import Item from '../Item/Item';
 
 const Home = () => {
 
+    const { items } = useLoadeddata();
+
     const navigate = useNavigate();
+
     return (
         <div>
             <Carousel >
@@ -30,6 +35,14 @@ const Home = () => {
                     </div>
                 </CarouselItem>
             </Carousel>
+
+            <div>
+
+                {
+                    items?.slice(0, 6).map(item => <Item key={item._id} item={item}></Item>)
+                }
+
+            </div>
 
             <div>
                 <button onClick={() => navigate('/manage-item')} type="button" className="btn btn-link btn-lg bg-dark text-white mt-2 m-4">Manage Items</button>

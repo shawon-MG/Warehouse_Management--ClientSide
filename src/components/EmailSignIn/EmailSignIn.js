@@ -3,18 +3,15 @@ import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase.config';
-// import app from '../../firebase.config';
 import useFirebase from '../../hooks/useFirebase';
-
-
-
-// const auth = getAuth(app);
 
 const SignIn = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [register, setRegister] = useState(false);
+
+
 
     const handleEmailBlur = (event) => {
         setEmail(event.target.value);
@@ -69,9 +66,14 @@ const SignIn = () => {
 
     const { handleGoogleSignIn } = useFirebase();
 
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
     const from = location?.search?.from?.pathname || '/';
+
+    if (email) {
+        navigate(from, { replace: true });
+    }
+
     const googleSignIn = () => {
         handleGoogleSignIn()
             .then(() => {

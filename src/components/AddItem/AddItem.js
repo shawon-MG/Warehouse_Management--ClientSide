@@ -5,10 +5,9 @@ const AddItem = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
 
-
     return (
-        <div className='w-50 mx-auto'>
-            <h2 className='bg-secondary text-white p-2 mt-4'>Add Items As You Want</h2>
+        <div className='w-50 mx-auto rounded shadow-lg p-4'>
+            <h2 className='bg-secondary text-white p-2 mt-2 rounded'>Add Items As You Want</h2>
 
             < form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
 
