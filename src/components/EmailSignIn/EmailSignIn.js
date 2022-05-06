@@ -11,8 +11,6 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [register, setRegister] = useState(false);
 
-
-
     const handleEmailBlur = (event) => {
         setEmail(event.target.value);
     }

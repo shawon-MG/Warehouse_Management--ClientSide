@@ -6,7 +6,8 @@ import Item from '../Item/Item';
 
 const Home = () => {
 
-    const { items } = useLoadeddata();
+    const [items] = useLoadeddata();
+    console.log(items);
 
     const navigate = useNavigate();
 
@@ -36,13 +37,17 @@ const Home = () => {
                 </CarouselItem>
             </Carousel>
 
-            <div>
 
+            <div className="row row-cols-1 row-cols-md-3 g-4 m-4">
                 {
-                    items?.slice(0, 6).map(item => <Item key={item._id} item={item}></Item>)
+                    items.slice(0, 6).map(item => <div key={item._id}>
+                        <Item item={item}></Item>
+                    </div>
+                    )
                 }
-
             </div>
+
+
 
             <div>
                 <button onClick={() => navigate('/manage-item')} type="button" className="btn btn-link btn-lg bg-dark text-white mt-2 m-4">Manage Items</button>
