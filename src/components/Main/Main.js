@@ -1,15 +1,13 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
-
-
-
-import useFirebase from '../../hooks/useFirebase';
-
+import { auth } from '../../firebase.config';
 
 const Main = () => {
 
-    const { user, handleSignOut } = useFirebase();
+    const [user] = useAuthState(auth);
 
     return (
 
@@ -23,7 +21,7 @@ const Main = () => {
             {
                 user?.uid
                     ?
-                    <Button onClick={handleSignOut} variant="secondary" className='text-white me-3'> Sign Out</Button>
+                    <Button onClick={() => signOut(auth)} variant="secondary" className='text-white me-3'> Sign Out</Button>
                     :
                     <Link className='bg-secondary text-white p-2 rounded fs-5 text-decoration-none' to='/signIn'> Sign In</Link>
 
