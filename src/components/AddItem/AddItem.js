@@ -16,7 +16,6 @@ const AddItem = () => {
             .then(res => res.json())
             .then(result => {
                 console.log('result');
-
             })
     };
 
@@ -34,12 +33,10 @@ const AddItem = () => {
 
                 <input className='mb-4' placeholder='Price' {...register("price", { required: true })} />
 
-                <input className='mb-4' placeholder='Quantity' {...register("price", { required: true })} />
+                <input className='mb-4' placeholder='Quantity' {...register("Quantity", { required: true })} />
 
 
-                <input className='mb-4' placeholder='Supplier Name'  {...register("name")} />
-
-                {/* {errors.exampleRequired && <span>This field is required</span>} */}
+                <input className='mb-4' placeholder='Supplier Name'{...register("Supplier Name")} />
 
                 <input type="submit" value="Add Items" />
             </form>

@@ -6,7 +6,22 @@ const ManageItem = () => {
 
     const navigate = useNavigate();
 
-    const [items] = useLoadeddata();
+    const [items, setItems] = useLoadeddata();
+
+    const handleDeleteOneItem = id => {
+        const procced = window.confirm('Are You Sure?');
+        if (procced) {
+            const url = `http://localhost:4000/items/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = items.filter(item => item._id !== id);
+                    setItems(remaining);
+                });
+        }
+    }
     return (
         <div>
             <h2 className='bg-secondary text-white w-50 p-1 mx-auto justify-content-center rounded'> <span className='bg-dark text-white m-1 ps-1 rounded'> {items.length} </span> Inventory items available now...</h2>
@@ -25,7 +40,9 @@ const ManageItem = () => {
                                         <h6 className="card-title"><strong>Quantity</strong> : {item.quantity}</h6>
                                         <h6 className="card-title"><strong>Supplier</strong> : {item.supplier}</h6>
                                     </div>
-                                    <button type="button" className="btn btn-secondary">Delete Item</button>
+
+                                    <button onClick={() => handleDeleteOneItem(item._id)} type="button" className="btn btn-secondary">Delete Item</button>
+
                                 </div>
                             </div>
 
