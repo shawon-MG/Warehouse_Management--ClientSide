@@ -12,7 +12,7 @@ const UpdateStock = () => {
         fetch(`http://localhost:4000/items/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
-    }, []);
+    }, [item]);
 
     const { name, img, price, quantity, supplier, description } = item;
 
