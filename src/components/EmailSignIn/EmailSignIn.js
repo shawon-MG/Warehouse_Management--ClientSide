@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase.config';
 
 const SignIn = () => {
-
-    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+    //-------------- react-firebase-hooks--------------
+    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
     const [sendEmailVerification] = useSendEmailVerification(auth);
 
@@ -15,6 +15,9 @@ const SignIn = () => {
     const [register, setRegister] = useState('');
     const [error, setError] = useState('');
 
+    const handleNameBlur = e => {
+        user(e.target.value);
+    };
     const handleEmailBlur = e => {
         setEmail(e.target.value);
     };
@@ -47,10 +50,13 @@ const SignIn = () => {
                 .then(() => {
                     navigate(from, { replace: true })
                 });
+            sendEmailVerification();
+            alert('Sent email');
         }
-
-        sendEmailVerification();
-        Window.alert('Varify Your Email Address');
+        // const emailSent = Window.alert('Varify Your Email Address');
+        // if (emailSent) {
+        //     sendEmailVerification();
+        // }
     };
 
     // -------------Google Sign In-------------//
@@ -82,6 +88,12 @@ const SignIn = () => {
             <div className="registration w-50 mx-auto">
                 <h2 className='bg-secondary text-white p-2 mt-4'> Please {register ? 'Sign In' : 'Register'}</h2>
                 <Form onSubmit={handleSubmit}>
+                    {
+                        !register && <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Control onBlur={handleNameBlur} type="name" placeholder="Enter Your Name" required />
+                        </Form.Group>
+                    }
+
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter Your Email" required />
                     </Form.Group>
