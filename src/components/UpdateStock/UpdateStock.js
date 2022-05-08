@@ -20,7 +20,6 @@ const UpdateStock = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        console.log(data);
         const url = `http://localhost:4000/items/${id}`;
         fetch(url, {
             method: 'PUT',
@@ -35,6 +34,7 @@ const UpdateStock = () => {
             })
         reset();
     };
+
 
     return (
         <div>
