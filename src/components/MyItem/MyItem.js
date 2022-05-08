@@ -12,7 +12,7 @@ const MyItem = () => {
         const email = user.email;
         const procced = window.confirm('Are You Sure?');
         if (procced) {
-            const url = `http://localhost:4000/items/${email}`;
+            const url = `https://blooming-mountain-30106.herokuapp.com/items/${email}`;
             fetch(url, {
                 method: 'DELETE'
             })

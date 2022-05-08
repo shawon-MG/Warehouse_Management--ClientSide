@@ -9,7 +9,7 @@ const UpdateStock = () => {
     const { id } = useParams();
     const [item, setItem] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:4000/items/${id}`)
+        fetch(`https://blooming-mountain-30106.herokuapp.com/items/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
     }, [item]);
@@ -23,7 +23,7 @@ const UpdateStock = () => {
         const newQuantity = parseInt(data.quantity) + parseInt(quantity);
         const newData = { quantity: newQuantity };
 
-        const url = `http://localhost:4000/items/${id}`;
+        const url = `https://blooming-mountain-30106.herokuapp.com/items/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -41,7 +41,7 @@ const UpdateStock = () => {
     const handleDelivered = () => {
         const newQuantitydata = parseInt(quantity) - 1;
         const newData = { quantity: newQuantitydata };
-        const url = `http://localhost:4000/items/${id}`;
+        const url = `https://blooming-mountain-30106.herokuapp.com/items/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

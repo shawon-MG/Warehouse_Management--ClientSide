@@ -11,7 +11,7 @@ const ManageItem = () => {
     const handleDeleteOneItem = id => {
         const procced = window.confirm('Are You Sure?');
         if (procced) {
-            const url = `http://localhost:4000/items/${id}`;
+            const url = `https://blooming-mountain-30106.herokuapp.com/items/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

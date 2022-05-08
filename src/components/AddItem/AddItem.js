@@ -5,7 +5,7 @@ const AddItem = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:4000/items`;
+        const url = `https://blooming-mountain-30106.herokuapp.com/items`;
         fetch(url, {
             method: 'POST',
             headers: {

@@ -53,10 +53,6 @@ const SignIn = () => {
             sendEmailVerification();
             alert('Sent email');
         }
-        // const emailSent = Window.alert('Varify Your Email Address');
-        // if (emailSent) {
-        //     sendEmailVerification();
-        // }
     };
 
     // -------------Google Sign In-------------//
@@ -71,17 +67,6 @@ const SignIn = () => {
                 navigate(from, { replace: true })
             })
     };
-
-    // const [user] = useAuthState(auth);
-
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // const from = location?.state?.from?.pathname || '/';
-
-    // if (user) {
-    //     navigate(from, { replace: true });
-    // };
-
 
     return (
         <div>
