@@ -1,14 +1,18 @@
 import React from 'react';
 import useLoadeddata from '../../hooks/useLoadeddata';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase.config';
+
 
 const MyItem = () => {
-
+    const [user] = useAuthState(auth)
     const [items, setItems] = useLoadeddata();
 
     const handleDeleteOneItem = id => {
+        const email = user.email;
         const procced = window.confirm('Are You Sure?');
         if (procced) {
-            const url = `http://localhost:4000/items/${id}`;
+            const url = `http://localhost:4000/items/${email}`;
             fetch(url, {
                 method: 'DELETE'
             })

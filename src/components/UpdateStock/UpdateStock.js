@@ -20,13 +20,34 @@ const UpdateStock = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
+        const newQuantity = parseInt(data.quantity) + parseInt(quantity);
+        const newData = { quantity: newQuantity };
+
         const url = `http://localhost:4000/items/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(newData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                alert('Quantity Updated');
+            })
+        reset();
+    };
+
+    const handleDelivered = () => {
+        const newQuantitydata = parseInt(quantity) - 1;
+        const newData = { quantity: newQuantitydata };
+        const url = `http://localhost:4000/items/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newData)
         })
             .then(res => res.json())
             .then(data => {
@@ -49,11 +70,12 @@ const UpdateStock = () => {
                             <h6 className="card-title"><strong>Quantity</strong> : {quantity}</h6>
                             <h6 className="card-title"><strong>Supplier</strong> : {supplier}</h6>
                         </div>
-                        <button type="button" className="btn btn-secondary"> Delivered </button>
+                        <button onClick={handleDelivered} type="button" className="btn btn-secondary"> Delivered </button>
                     </div>
                 </div>
 
             </div>
+
             <div className='w-50 mx-auto rounded shadow-lg p-4'>
                 <h2 className='bg-secondary text-white p-2 mt-2 rounded'>Update Quantity</h2>
 

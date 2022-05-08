@@ -5,7 +5,7 @@ const Blogs = () => {
     return (
         <div className='mt-5 w-75 mx-auto'>
 
-            <div className='mb-5'>
+            <div className='mb-5 shadow-lg'>
                 <h2 className='bg-secondary p-2 text-white'>1. What are the differences between JavaScript and NodeJs ? </h2>
                 <Table bordered hover size="sm">
                     <thead>
@@ -52,14 +52,14 @@ const Blogs = () => {
 
             </div>
 
-            <div className='mb-5'>
+            <div className='mb-5 shadow-lg'>
                 <h2 className='bg-secondary p-2 text-white'>2. When should you use Nodejs and when should you use MongoDB ? </h2>
                 <Card>
                     <Card.Body>MongoDB and NodeJS are two different technologies. MongoDB is a database system which gives you a chance to efficiently store documents in a database and to perform operations like data updates, or to search documents by some criterias. Nodejs is a Javascript engine that you can write any application you want with (by programming in the Javascript language). It runs your Javascript code. Most commonly, it is used to build servers that can respond to web requests, though it can be used for lots of other types of code too. MongoDB is a database engine. Code within some application or server uses MongoDB to save, query or update data in a database. There are many web servers built with nodejs that will then use MongoDB for storing data. MongoDB offers an API library that runs within a Nodejs application to give you programmatic access to MongoDB so you can create databases and then add, query, update or delete data from the MongoDB database. MongoDB also has API libraries for other programming environments such as Python, Java, etc. NodeJS's responsibilty is especially to execute your application.</Card.Body>
                 </Card>
             </div>
 
-            <div className='mb-5'>
+            <div className='mb-5 shadow-lg'>
                 <h2 className='bg-secondary p-2 text-white'>3. What are the differences between SQL and NoSQL databases ? </h2>
                 <Table bordered hover size="sm">
                     <thead>
@@ -102,7 +102,7 @@ const Blogs = () => {
 
             </div>
 
-            <div className='mb-5'>
+            <div className='mb-5 shadow-lg'>
                 <h2 className='bg-secondary p-2 text-white'>4. What is the purpose of jwt and how does it work ? </h2>
                 <Card>
                     <Card.Body>JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued. In short, JWTs are used as a secure way to authenticate users and share information. <br /> JWTs differ from other web tokens in that they contain a set of claims. Claims are used to transmit information between two parties. What these claims are depends on the use case at hand. For example, a claim may assert who issued the token, how long it is valid for, or what permissions the client has been granted. </Card.Body>
